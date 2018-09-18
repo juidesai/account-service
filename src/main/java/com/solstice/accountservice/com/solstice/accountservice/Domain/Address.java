@@ -12,7 +12,7 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "addressId")
     private long addressId;
-    @Column(name = "c")
+    @Column(name = "street")
     private String street;
     @Column(name = "apt")
     private String apt;
@@ -31,7 +31,7 @@ public class Address {
 
     public Address(){}
 
-    public Address(long addressId, String street, String apt, String city, String state, long zipcode, String country) {
+    public Address(long addressId, String street, String apt, String city, String state, long zipcode, String country, Account account) {
         this.addressId = addressId;
         this.street = street;
         this.apt = apt;
@@ -39,6 +39,7 @@ public class Address {
         this.state = state;
         this.zipcode = zipcode;
         this.country = country;
+        this.account=account;
     }
 
     public long getAddressId() {

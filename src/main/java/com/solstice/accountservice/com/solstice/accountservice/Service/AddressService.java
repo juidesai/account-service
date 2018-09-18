@@ -25,9 +25,9 @@ public class AddressService {
         return addressRepository.findAll();
     }
 
-    public void addNewAddress(Address address) {
-        addressRepository.save(address);
-    }
+//    public void addNewAddress(Address address) {
+//        addressRepository.save(address);
+//    }
 
     public Address addNewAddressById(Address address, long accountId){
         Account account=accountRepository.getOne(accountId);
@@ -35,7 +35,7 @@ public class AddressService {
         return addressRepository.save(address);
     }
 
-    public Address updateAddressById(Address address, long accountId, long addressId){
+    public void updateAddressById(Address address, long accountId, long addressId){
         Address address1= addressRepository.findByAccountIdAndAddressId(accountId, addressId);
         address1.setApt(address.getApt());
         address1.setCity(address.getCity());
@@ -43,7 +43,7 @@ public class AddressService {
         address1.setState(address.getState());
         address1.setCountry(address.getCountry());
         address1.setZipcode(address.getZipcode());
-        return addressRepository.save(address1);
+        addressRepository.save(address1);
     }
 
     public void deleteAddressById(long accountId, long addressId){

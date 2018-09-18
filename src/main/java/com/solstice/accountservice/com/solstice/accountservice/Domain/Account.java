@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
 
@@ -18,13 +20,17 @@ public class Account {
     private long accountId;
 
     @Column(name = "firstname")
+    @NotNull
     private String firstName;
 
     @Column(name = "lastname")
+    @NotNull
     private String lastName;
 
     @Column(name = "email")
     @Size(max = 20)
+    @NotNull
+    @Email(message = "Email should be valid")
     private String email;
 
 //    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL, orphanRemoval = true)
